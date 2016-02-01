@@ -14,7 +14,6 @@ Change your wallpaper by season
 ## To Do
 
 - Remove dependecy to feh. Let the user decide.
-- Handle flickr
 
 ## Bonus
 
@@ -27,3 +26,4 @@ Change your wallpaper by season
 - Set manually the next season (a -s,--season ?)
 - Get first link with a matching resolution (or greater) (a -r,--resolutions)
 - Set season with geolocalisation handling
+- Handle flickr
