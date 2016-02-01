@@ -27,3 +27,4 @@ Change your wallpaper by season
 - Get first link with a matching resolution (or greater) (a -r,--resolutions)
 - Set season with geolocalisation handling
 - Handle flickr
+- Add a "-n, --next" In case you dont like the first picture, skip to the next one.
