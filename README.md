@@ -15,7 +15,7 @@ Change your wallpaper by season
 
 - Remove dependecy to feh. Let the user decide.
 
-## Bonus
+### Bonus
 
 - Handle South
 - Handle the world
