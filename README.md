@@ -1,6 +1,9 @@
 # SeasonPaper
 
+## Summary
+
 Change your wallpaper by season
+
 
 ## ChangeLog
 
@@ -11,19 +14,16 @@ Change your wallpaper by season
 - Save the picture in /tmp
 - Set the picture as wallpaper
 
-## To Do
 
-- Remove dependecy to feh. Let the user decide.
+## Idea
 
-## Bonus
-
-- Handle South
-- Handle the world
-- Create a history `[Date] [Name] [link] [] [reddit]` format could be csv or json
-- Add option (change each day, keep picture on an appropriate folder, verbose mode, etc)
-- Create a .seasonpaper to save option
 - Dont download the picture if it the same top post (or take the next post)
 - Set manually the next season (a -s,--season ?)
 - Get first link with a matching resolution (or greater) (a -r,--resolutions)
-- Set season with geolocalisation handling
+- Handle South Hemisphere
+- Handle the world (moonsoon, etc.)
+- Create a history `[Date] [Name] [link] [] [reddit]` format could be csv or json
+- Add option (change each day, keep picture on an appropriate folder, verbose mode, etc)
+- Create a .seasonpaper to save option
+- Set season by geolocalisation
 - Handle flickr

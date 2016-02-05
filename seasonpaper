@@ -1,63 +1,57 @@
 #!/bin/bash
 
-# v0.1.0
+# v0.2.0
 
 # https://en.wikipedia.org/wiki/Solstice
 # http://www.developpez.net/forums/d880640/java/general-java/calcul-saisons/
 # http://www.jgiesen.de/astro/astroJS/seasons/seasons.js
-# http://stackoverflow.com/questions/1579587/how-can-i-get-the-current-season-using-net-summer-winter-etc
+# http://stackoverflow.com/q/1579587/1248177
 
-# todo
-# handle no internet
-
-# http://stackoverflow.com/questions/1579587/how-can-i-get-the-current-season-using-net-summer-winter-etc
+# http://stackoverflow.com/q/1579587/1248177
 # no native floating point in bash so n*100
 function getSeason {
-
-# 	function HandleHemisphere {
-# 		local hemisphere=0
-# 
-# 		# come from south
-# 		if [ $1 = true ]; then
-# 			hemisphere=2
-# 		fi
-# 
-# 		echo $($($2 + $hemisphere) % 4)
-# 	}
-	
-	readonly seasons=(Spring Summer Autumn Winter)
 	readonly month=$(date "+%m")
 	readonly day=$(date "+%d")
-	# local fromSouthernHemisphere=$1
-
 	readonly dateAsInt=$(($((month + $((day / 100)))) * 100))
+	
 	if [ $dateAsInt -lt 321 ] || [ $dateAsInt -ge 1222 ]; then
-		echo "${seasons[3]}"	# Winter
+		echo "Winter"
 	elif [ $dateAsInt -lt 621 ]; then
-		echo "${seasons[0]}"	# Spring
+		echo "Spring"
 	elif [ $dateAsInt-lt 923 ]; then
-		echo "${season[1]}"		# Summer
+		echo "Summer"
 	else
-		echo "${season[2]}"		# Autumn
+		echo "Autumn"
 	fi
 }
 
+function extractUrl {
+	# get json
+	curl -s "$1" |
+	# extract all url
+	grep -Po '"url":.*?[^\\]",' |
+	# remove each one who contains reddit
+	grep -v "reddit" |
+	# keep direct url (no flickr...)
+	grep -Po '\bhttps?:[^)"]+\.(?:jpg|jpeg|png)' |
+	# keep first
+	(head -n1 && tail -n1)
+}
+
 # Get season
+readonly season=$(getSeason)
 
-season=$(getSeason)
-
-# Get picture url from Reddit
-
-url="https://www.reddit.com/r/${season}Porn.json"
-
-# get json | extract all url | remove the one who contains reddit | keep direct link (no flickr...) | keep first
-source=$(curl -s "$url" | grep -Po '"url":.*?[^\\]",' | grep -v "reddit" | grep -Po '\bhttps?:[^)"]+\.(?:jpg|jpeg|png)' | (head -n1 && tail -n1))
+# Get image url from Reddit
+readonly imageSource=$(extractUrl "https://www.reddit.com/r/EarthPorn.json")
+# readonly imageSource=$(extractUrl "https://www.reddit.com/r/${season}Porn.json")
 
 # Set the picture as wallpaper
 
-filename=$(basename "$source")
-extension="${filename##*.}"
-
-wget "$source" #-o "/tmp/seasonpaper.$extension" # file is corrupt # make silent ?
-mv "$filename" "/tmp/seasonpaper.$extension"
-feh --bg-fill "/tmp/seasonpaper.$extension"
+echo "$imageSource"
+# 
+# readonly filename=$(basename "$imageSource")
+# readonly extension="${filename##*.}"
+# 
+# wget -q --show-progress "$imageSource" --output-document "/tmp/seasonpaper.$extension" 
+# 
+feh --bg-fill $imageSource
