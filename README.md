@@ -19,12 +19,12 @@ Change your wallpaper by season
 - Save the picture in /tmp
 - Set the picture as wallpaper
 
-
 ## Idea
 
 - Dont download the picture if it the same top post (or take the next post)
 - Set manually the next season (a -s,--season ?)
 - Get first link with a matching resolution (or greater) (a -r,--resolutions)
+- Add a "-n, --next" In case you dont like the first picture, skip to the next one.
 - Handle South Hemisphere
 - Handle the world (moonsoon, etc.)
 - Create a history `[Date] [Name] [link] [] [reddit]` format could be csv or json
