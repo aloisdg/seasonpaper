@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# v0.2.0
+# v0.2.1
 
 # https://en.wikipedia.org/wiki/Solstice
+# http://stackoverflow.com/q/1579587/1248177
 # http://www.developpez.net/forums/d880640/java/general-java/calcul-saisons/
 # http://www.jgiesen.de/astro/astroJS/seasons/seasons.js
-# http://stackoverflow.com/q/1579587/1248177
 
 # http://stackoverflow.com/q/1579587/1248177
 # no native floating point in bash so n*100
@@ -42,16 +42,7 @@ function extractUrl {
 readonly season=$(getSeason)
 
 # Get image url from Reddit
-readonly imageSource=$(extractUrl "https://www.reddit.com/r/EarthPorn.json")
-# readonly imageSource=$(extractUrl "https://www.reddit.com/r/${season}Porn.json")
+readonly imageSource=$(extractUrl "https://www.reddit.com/r/${season}Porn.json")
 
-# Set the picture as wallpaper
-
+# Print image source
 echo "$imageSource"
-# 
-# readonly filename=$(basename "$imageSource")
-# readonly extension="${filename##*.}"
-# 
-# wget -q --show-progress "$imageSource" --output-document "/tmp/seasonpaper.$extension" 
-# 
-feh --bg-fill $imageSource

@@ -4,8 +4,13 @@
 
 Change your wallpaper by season
 
-
 ## ChangeLog
+
+### v0.2.0
+
+- Follow the unix philosophy
+- Remove dependecy to `wget` and `feh`
+- Switch for a simple print of the image source
 
 ### v0.1.0
 
