@@ -4,6 +4,36 @@
 
 Change your wallpaper by season
 
+## Usage
+
+### Set as wallpaper with [`Feh`](https://wiki.archlinux.org/index.php/Feh)
+
+#### command
+
+```bash
+feh --bg-fill $(./seasonpaper)
+```
+
+#### xargs
+
+```bash
+./seasonpaper | xargs feh --bg-fill
+```
+
+### Download image with [`wget`](https://wiki.archlinux.org/index.php/Wget)
+
+#### command
+
+```bash
+wget -q --show-progress $(./seasonpaper)
+```
+
+#### xargs
+
+```bash
+./seasonpaper | xargs wget -q --show-progress
+```
+
 ## ChangeLog
 
 ### v0.2.0
