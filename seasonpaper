@@ -9,11 +9,13 @@
 
 # http://stackoverflow.com/q/1579587/1248177
 # no native floating point in bash so n*100
+# https://lists.gnu.org/archive/html/bug-bash/2009-11/msg00009.html
+#  bash dont know how to handle leading zeros
 function getSeason {
 	readonly month=$(date "+%m")
 	readonly day=$(date "+%d")
-	readonly dateAsInt=$(($((month + $((day / 100)))) * 100))
-	
+
+	readonly dateAsInt=$(( 10#$month * 100 + 10#$day))
 	if [ $dateAsInt -lt 321 ] || [ $dateAsInt -ge 1222 ]; then
 		echo "Winter"
 	elif [ $dateAsInt -lt 621 ]; then
